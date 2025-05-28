@@ -1,6 +1,6 @@
 
 import type { ExperienceEntry } from '@/types';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Briefcase, MapPin, CalendarDays } from 'lucide-react';
 
 interface ExperienceSectionProps {
@@ -9,10 +9,10 @@ interface ExperienceSectionProps {
 
 export function ExperienceSection({ experience }: ExperienceSectionProps) {
   return (
-    <Card className="shadow-lg">
+    <Card className="shadow-lg hover-scale-up">
       <CardHeader className="flex flex-row items-center gap-2">
         <Briefcase className="w-6 h-6 text-primary" />
-        <CardTitle className="text-2xl font-semibold text-primary">Work Experience</CardTitle>
+        <CardTitle className="text-2xl font-semibold text-primary">Work Experience & Responsibilities</CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         {experience.map((entry) => (

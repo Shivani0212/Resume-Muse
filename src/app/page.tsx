@@ -10,6 +10,7 @@ import { ExperienceSection } from '@/components/resume/experience-section';
 import { EducationSection } from '@/components/resume/education-section';
 import { SkillsSection } from '@/components/resume/skills-section';
 import { ProjectsSection } from '@/components/resume/projects-section';
+import { AiCoachSection } from '@/components/resume/ai-coach-section'; // New Import
 import { SectionWrapper } from '@/components/resume/section-wrapper';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -20,6 +21,7 @@ const sectionComponentsMap: Record<Exclude<SectionId, 'personalInfo'>, React.FC<
   education: EducationSection,
   skills: SkillsSection,
   projects: ProjectsSection,
+  aiCoach: AiCoachSection, // New Entry
 };
 
 // Define the fixed order of sections for the portfolio
@@ -27,6 +29,7 @@ const portfolioSectionOrder: Exclude<SectionId, 'personalInfo'>[] = [
   'summary',
   'projects',
   'skills',
+  'aiCoach', // New section added
   'experience',
   'education',
 ];
@@ -55,10 +58,11 @@ export default function PortfolioPage() {
   const sectionsToRender: ResumeSection[] = portfolioSectionOrder.map(id => {
     const titleMap: Record<typeof id, string> = {
       summary: 'Summary',
-      experience: 'Work Experience & Responsibilities',
+      experience: 'Work Experience & Responsibilities', // Updated Title
       education: 'Education',
       skills: 'Skills',
       projects: 'Projects',
+      aiCoach: 'AI Resume Coach', // Title for the new section
     };
     return { id, title: titleMap[id], component: sectionComponentsMap[id] };
   });
@@ -66,7 +70,7 @@ export default function PortfolioPage() {
   return (
     <div className="container mx-auto max-w-5xl py-8 px-4 animate-fadeIn">
       <header className="mb-12 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-primary">Shivani Kumari</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-primary">{resumeData.personalInfo.name}</h1>
         <p className="text-xl md:text-2xl text-accent mt-2">{resumeData.personalInfo.title}</p>
       </header>
 
@@ -78,12 +82,20 @@ export default function PortfolioPage() {
         {sectionsToRender.map((section) => {
           const SectionComponent = section.component;
           // Props mapping based on section ID
-          const sectionProps = section.id === 'summary'
-            ? { summary: resumeData.personalInfo.summary }
-            : { [section.id]: resumeData[section.id as keyof Omit<ResumeData, 'personalInfo'>] };
+          let sectionProps = {};
+          if (section.id === 'summary') {
+            sectionProps = { summary: resumeData.personalInfo.summary };
+          } else if (section.id === 'aiCoach') {
+            sectionProps = {}; // AiCoachSection doesn't need specific props from resumeData
+          } 
+          else if (resumeData[section.id as keyof Omit<ResumeData, 'personalInfo' | 'aiCoach'>]) {
+             sectionProps = { [section.id]: resumeData[section.id as keyof Omit<ResumeData, 'personalInfo' | 'aiCoach'>] };
+          }
           
           return (
             <SectionWrapper key={section.id}>
+              {/* Explicitly render title for aiCoach section if needed, or handle in component */}
+              {/* For other sections, title is usually part of the component's CardHeader */}
               <SectionComponent {...sectionProps} />
             </SectionWrapper>
           );

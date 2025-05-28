@@ -2,7 +2,6 @@
 import type { PersonalInfo } from '@/types';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Mail, Phone, Linkedin, Github, Link as LinkIcon } from 'lucide-react';
-import Image from 'next/image';
 
 interface PersonalInfoSectionProps {
   data: PersonalInfo;
@@ -11,42 +10,42 @@ interface PersonalInfoSectionProps {
 export function PersonalInfoSection({ data }: PersonalInfoSectionProps) {
   const initials = data.name.split(' ').map(n => n[0]).join('');
   return (
-    <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 p-6 bg-card rounded-lg shadow-md">
-      <Avatar className="w-24 h-24 md:w-32 md:h-32 border-2 border-primary">
+    <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 p-6 bg-card rounded-lg shadow-md hover-scale-up">
+      <Avatar className="w-24 h-24 md:w-32 md:h-32 border-2 border-primary shadow-lg">
         <AvatarImage src={`https://placehold.co/128x128.png`} alt={data.name} data-ai-hint="professional portrait" />
         <AvatarFallback className="text-3xl bg-primary text-primary-foreground">{initials}</AvatarFallback>
       </Avatar>
       <div className="text-center md:text-left">
         <h1 className="text-3xl md:text-4xl font-bold text-primary">{data.name}</h1>
         <p className="text-xl text-accent font-medium">{data.title}</p>
-        <div className="mt-3 space-y-1 text-sm text-muted-foreground">
-          <div className="flex items-center justify-center md:justify-start gap-2">
-            <Mail className="w-4 h-4 text-accent" />
+        <div className="mt-3 space-y-1.5 text-sm text-muted-foreground">
+          <div className="flex items-center justify-center md:justify-start gap-2 hover:text-accent transition-colors">
+            <Mail className="w-4 h-4 text-primary" />
             <a href={`mailto:${data.email}`} className="hover:underline">{data.email}</a>
           </div>
-          <div className="flex items-center justify-center md:justify-start gap-2">
-            <Phone className="w-4 h-4 text-accent" />
+          <div className="flex items-center justify-center md:justify-start gap-2 hover:text-accent transition-colors">
+            <Phone className="w-4 h-4 text-primary" />
             <span>{data.phone}</span>
           </div>
           {data.linkedin && (
-            <div className="flex items-center justify-center md:justify-start gap-2">
-              <Linkedin className="w-4 h-4 text-accent" />
+            <div className="flex items-center justify-center md:justify-start gap-2 hover:text-accent transition-colors">
+              <Linkedin className="w-4 h-4 text-primary" />
               <a href={`https://${data.linkedin}`} target="_blank" rel="noopener noreferrer" className="hover:underline">
                 {data.linkedin}
               </a>
             </div>
           )}
           {data.github && (
-            <div className="flex items-center justify-center md:justify-start gap-2">
-              <Github className="w-4 h-4 text-accent" />
+            <div className="flex items-center justify-center md:justify-start gap-2 hover:text-accent transition-colors">
+              <Github className="w-4 h-4 text-primary" />
               <a href={`https://${data.github}`} target="_blank" rel="noopener noreferrer" className="hover:underline">
                 {data.github}
               </a>
             </div>
           )}
           {data.website && (
-            <div className="flex items-center justify-center md:justify-start gap-2">
-              <LinkIcon className="w-4 h-4 text-accent" />
+            <div className="flex items-center justify-center md:justify-start gap-2 hover:text-accent transition-colors">
+              <LinkIcon className="w-4 h-4 text-primary" />
               <a href={`https://${data.website}`} target="_blank" rel="noopener noreferrer" className="hover:underline">
                 {data.website}
               </a>
