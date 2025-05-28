@@ -9,92 +9,92 @@ body {
 
 @layer base {
   :root {
-    /* Aesthetic Palette: Professional & Warm */
-    --background: 40 50% 98%; /* Soft Cream */
-    --foreground: 220 25% 20%; /* Dark Slate Blue */
+    /* Sky Blue & White Palette: Clean & Modern */
+    --background: 0 0% 100%; /* White */
+    --foreground: 220 25% 15%; /* Dark Slate Blue/ 거의 검정색 */
 
-    --card: 40 30% 99%; /* Lighter Cream for cards */
-    --card-foreground: 220 25% 20%;
+    --card: 0 0% 100%; /* White cards */
+    --card-foreground: 220 25% 15%;
 
-    --popover: 40 30% 99%;
-    --popover-foreground: 220 25% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 15%;
 
-    --primary: 205 55% 40%; /* Calming Steel Blue */
-    --primary-foreground: 205 55% 95%; /* Light text for primary */
+    --primary: 205 85% 55%; /* Vibrant Sky Blue */
+    --primary-foreground: 0 0% 100%; /* White text on primary */
 
-    --secondary: 210 30% 90%; /* Light Bluish Gray */
-    --secondary-foreground: 210 30% 30%;
+    --secondary: 210 50% 96%; /* Very Light Bluish Gray */
+    --secondary-foreground: 210 40% 30%; /* Darker text for secondary */
 
-    --muted: 210 25% 94%; /* Lighter Gray */
-    --muted-foreground: 210 15% 50%; /* Softer Muted Text */
+    --muted: 210 50% 97%; /* Lighter Gray for muted backgrounds */
+    --muted-foreground: 210 25% 55%; /* Softer Muted Text */
 
-    --accent: 25 85% 60%; /* Warm Coral/Orange */
-    --accent-foreground: 25 85% 98%; /* Light text for accent */
+    --accent: 195 75% 50%; /* Slightly different shade of blue or complementary */
+    --accent-foreground: 0 0% 100%; /* White text for accent */
 
-    --destructive: 0 72% 51%; /* Keeping ShadCN default destructive */
+    --destructive: 0 72% 51%; /* Standard destructive red */
     --destructive-foreground: 0 0% 98%;
 
-    --border: 210 20% 88%; /* Soft Gray for borders */
-    --input: 210 20% 92%; /* Slightly darker input background */
-    --ring: 25 85% 60%; /* Accent color for rings */
+    --border: 210 30% 88%; /* Soft Gray for borders */
+    --input: 210 30% 94%; /* Slightly darker input background */
+    --ring: 205 85% 55%; /* Sky Blue for rings */
 
     --radius: 0.5rem;
 
     /* Sidebar specific colors */
-    --sidebar-background: 220 25% 22%; /* Darker Slate Blue for sidebar */
-    --sidebar-foreground: 210 20% 88%; /* Lighter text for sidebar */
-    --sidebar-primary: 25 85% 60%; /* Accent for active/selected sidebar items */
-    --sidebar-primary-foreground: 25 85% 98%;
-    --sidebar-accent: 220 25% 30%; /* Hover for sidebar items */
-    --sidebar-accent-foreground: 210 20% 90%;
-    --sidebar-border: 220 25% 35%;
-    --sidebar-ring: 25 85% 60%;
+    --sidebar-background: 215 45% 28%; /* Dark Blue for sidebar */
+    --sidebar-foreground: 210 30% 90%; /* Light text for sidebar */
+    --sidebar-primary: 205 85% 60%; /* Sky Blue for active/selected sidebar items */
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 45% 38%; /* Hover for sidebar items */
+    --sidebar-accent-foreground: 210 30% 95%;
+    --sidebar-border: 215 45% 22%;
+    --sidebar-ring: 205 85% 60%;
 
-    --chart-1: 205 55% 50%; /* Primary variant */
-    --chart-2: 25 80% 70%;  /* Accent variant */
-    --chart-3: 197 37% 24%; /* (Kept from old, adjust if needed) */
-    --chart-4: 43 74% 66%;  /* (Kept from old, adjust if needed) */
-    --chart-5: 27 87% 67%;  /* (Kept from old, adjust if needed) */
+    --chart-1: 205 70% 50%; /* Sky Blue variant */
+    --chart-2: 195 65% 55%;  /* Accent Blue variant */
+    --chart-3: 220 25% 40%; /* Darker Slate for contrast */
+    --chart-4: 45 80% 60%;  /* A warm complementary color like a soft orange/yellow */
+    --chart-5: 30 70% 65%;
   }
 
   .dark {
-    --background: 220 25% 10%; /* Very Dark Slate Blue */
-    --foreground: 210 20% 90%; /* Light Gray text */
+    --background: 220 30% 10%; /* Very Dark Blue/Almost Black */
+    --foreground: 210 40% 95%; /* Light Gray/Off-white text */
 
-    --card: 220 25% 14%;
-    --card-foreground: 210 20% 90%;
+    --card: 220 30% 14%; /* Darker card background */
+    --card-foreground: 210 40% 95%;
 
-    --popover: 220 25% 14%;
-    --popover-foreground: 210 20% 90%;
+    --popover: 220 30% 14%;
+    --popover-foreground: 210 40% 95%;
 
-    --primary: 25 80% 65%; /* Coral as primary in dark mode */
-    --primary-foreground: 25 80% 98%;
+    --primary: 205 80% 60%; /* Sky Blue, slightly brighter for dark mode */
+    --primary-foreground: 220 25% 10%; /* Dark text on primary for contrast */
 
-    --secondary: 220 25% 25%;
-    --secondary-foreground: 210 20% 92%;
+    --secondary: 220 30% 20%; /* Darker secondary background */
+    --secondary-foreground: 210 40% 85%;
 
-    --muted: 220 25% 20%;
-    --muted-foreground: 210 15% 65%;
+    --muted: 220 30% 18%; /* Darker muted background */
+    --muted-foreground: 210 30% 65%;
 
-    --accent: 205 50% 50%; /* Steel Blue as accent in dark mode */
-    --accent-foreground: 205 50% 95%;
+    --accent: 195 70% 60%; /* Accent Sky Blue for dark mode */
+    --accent-foreground: 220 25% 10%;
 
-    --destructive: 0 63% 40%;
+    --destructive: 0 63% 45%; /* Darker destructive red */
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 25% 28%;
-    --input: 220 25% 18%;
-    --ring: 25 80% 65%;
+    --border: 220 30% 25%; /* Darker border */
+    --input: 220 30% 16%; /* Darker input background */
+    --ring: 205 80% 60%; /* Sky Blue ring for dark mode */
 
     /* Sidebar specific colors for dark mode */
-    --sidebar-background: 220 25% 8%; /* Even Darker Sidebar */
-    --sidebar-foreground: 210 20% 85%;
-    --sidebar-primary: 25 80% 65%;
-    --sidebar-primary-foreground: 25 80% 98%;
-    --sidebar-accent: 220 25% 18%;
-    --sidebar-accent-foreground: 210 20% 90%;
-    --sidebar-border: 220 25% 22%;
-    --sidebar-ring: 25 80% 65%;
+    --sidebar-background: 220 30% 8%; /* Even Darker Sidebar */
+    --sidebar-foreground: 210 40% 88%;
+    --sidebar-primary: 205 80% 60%;
+    --sidebar-primary-foreground: 220 25% 10%;
+    --sidebar-accent: 220 30% 18%;
+    --sidebar-accent-foreground: 210 40% 90%;
+    --sidebar-border: 220 30% 15%;
+    --sidebar-ring: 205 80% 60%;
   }
 }
 
@@ -143,5 +143,7 @@ body {
   }
   .hover-scale-up:hover {
     animation: scaleUp 0.3s ease-out forwards;
+    /* Keep transform from being overridden by other hover effects if any */
+    transform: scale(1.03); 
   }
 }
