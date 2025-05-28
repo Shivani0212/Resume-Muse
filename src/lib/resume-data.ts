@@ -69,7 +69,7 @@ export const mockResumeData: ResumeData = {
       institution: 'Upgraded M S Dahaura Raghopur North',
       degree: 'Higher Secondary Examination (Class X)',
       period: '2016 - 2017',
-      location: 'Bihar', // Location inferred as Bihar
+      location: 'Bihar', 
       details: ['Percentage: 85 %'],
     },
   ],
@@ -92,13 +92,13 @@ export const mockResumeData: ResumeData = {
     // Databases
     { id: 's14', name: 'MySQL', category: 'Databases', level: 'Intermediate' },
     { id: 's15', name: 'MongoDB', category: 'Databases', level: 'Intermediate' },
-    { id: 's16', name: 'DBMS', category: 'Databases', level: 'Advanced' }, // From Area of Interest
+    { id: 's16', name: 'DBMS', category: 'Databases', level: 'Advanced' }, 
     // DevOps/Tools
     { id: 's17', name: 'Git', category: 'DevOps/Tools', level: 'Advanced' },
     { id: 's18', name: 'Postman', category: 'DevOps/Tools', level: 'Intermediate' },
     // Methodologies
     { id: 's19', name: 'Data Structures & Algorithms', category: 'Methodologies', level: 'Advanced' },
-    // Other (from Area of Interest)
+    // Other 
     { id: 's20', name: 'Operating Systems (OS)', category: 'Other', level: 'Advanced' },
     { id: 's21', name: 'Object-Oriented Programming (OOPs)', category: 'Other', level: 'Advanced' },
     { id: 's22', name: 'Networking', category: 'Other', level: 'Intermediate' },
@@ -113,7 +113,7 @@ export const mockResumeData: ResumeData = {
       technologies: ['Node Js', 'Express Js', 'MongoDB', 'Moment Js'],
       link: 'https://github.com/Shivani0212/Store-Monitoring',
       imageUrl: 'https://placehold.co/600x400.png',
-      dataAiHint: 'store backend',
+      dataAiHint: 'modern store',
     },
     {
       id: 'proj2',
@@ -123,7 +123,7 @@ export const mockResumeData: ResumeData = {
       technologies: ['Node Js', 'Express Js', 'MongoDB', 'React Js', 'Tailwind CSS'],
       link: 'https://github.com/Shivani0212/KoOl-ScHoOl',
       imageUrl: 'https://placehold.co/600x400.png',
-      dataAiHint: 'school management',
+      dataAiHint: 'animated school',
     },
     {
       id: 'proj3',
@@ -133,7 +133,7 @@ export const mockResumeData: ResumeData = {
       technologies: ['Node Js', 'Express Js', 'MongoDB', 'React Js', 'Bootstrap', 'CSS'],
       link: 'https://github.com/Shivani0212/ELITE-Wellness',
       imageUrl: 'https://placehold.co/600x400.png',
-      dataAiHint: 'health webapp',
+      dataAiHint: 'digital health',
     },
   ],
 };
