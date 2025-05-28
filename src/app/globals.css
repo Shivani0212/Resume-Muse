@@ -9,92 +9,93 @@ body {
 
 @layer base {
   :root {
-    /* Sky Blue & White Palette: Clean & Modern */
-    --background: 0 0% 100%; /* White */
-    --foreground: 220 25% 15%; /* Dark Slate Blue/ 거의 검정색 */
+    /* Black & Shiny Palette: Sleek & Modern */
+    --background: 240 10% 4%; /* Very Dark Desaturated Blue (Almost Black) */
+    --foreground: 0 0% 98%; /* Almost White */
 
-    --card: 0 0% 100%; /* White cards */
-    --card-foreground: 220 25% 15%;
+    --card: 240 8% 8%; /* Slightly Lighter Dark Blue for Cards */
+    --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 15%;
+    --popover: 240 8% 6%; /* Dark Popover */
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 205 85% 55%; /* Vibrant Sky Blue */
-    --primary-foreground: 0 0% 100%; /* White text on primary */
+    --primary: 190 90% 55%; /* Bright, Shiny Cyan (Luminous) */
+    --primary-foreground: 240 10% 10%; /* Dark Text for contrast on Primary */
 
-    --secondary: 210 50% 96%; /* Very Light Bluish Gray */
-    --secondary-foreground: 210 40% 30%; /* Darker text for secondary */
+    --secondary: 220 15% 15%; /* Dark Muted Blue/Gray */
+    --secondary-foreground: 0 0% 80%; /* Lighter text for Secondary */
 
-    --muted: 210 50% 97%; /* Lighter Gray for muted backgrounds */
-    --muted-foreground: 210 25% 55%; /* Softer Muted Text */
+    --muted: 220 15% 12%; /* Very Dark Muted */
+    --muted-foreground: 0 0% 60%; /* Softer Muted Text */
 
-    --accent: 195 75% 50%; /* Slightly different shade of blue or complementary */
-    --accent-foreground: 0 0% 100%; /* White text for accent */
+    --accent: 220 90% 60%; /* Bright Electric Blue (Shiny Accent) */
+    --accent-foreground: 0 0% 98%; /* White text for Accent */
 
-    --destructive: 0 72% 51%; /* Standard destructive red */
+    --destructive: 0 70% 50%; /* Vibrant Red */
     --destructive-foreground: 0 0% 98%;
 
-    --border: 210 30% 88%; /* Soft Gray for borders */
-    --input: 210 30% 94%; /* Slightly darker input background */
-    --ring: 205 85% 55%; /* Sky Blue for rings */
+    --border: 240 5% 20%; /* Subtle Dark Border */
+    --input: 240 5% 15%; /* Dark Input Fields */
+    --ring: 190 90% 60%; /* Ring color matches Shiny Primary */
 
-    --radius: 0.5rem;
+    --radius: 0.75rem; /* Slightly more rounded for a modern feel */
 
     /* Sidebar specific colors */
-    --sidebar-background: 215 45% 28%; /* Dark Blue for sidebar */
-    --sidebar-foreground: 210 30% 90%; /* Light text for sidebar */
-    --sidebar-primary: 205 85% 60%; /* Sky Blue for active/selected sidebar items */
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 215 45% 38%; /* Hover for sidebar items */
-    --sidebar-accent-foreground: 210 30% 95%;
-    --sidebar-border: 215 45% 22%;
-    --sidebar-ring: 205 85% 60%;
+    --sidebar-background: 240 10% 6%; /* Dark Sidebar, slightly offset from main bg */
+    --sidebar-foreground: 0 0% 90%; /* Light text for sidebar */
+    --sidebar-primary: 190 90% 55%; /* Shiny Cyan for active/selected sidebar items */
+    --sidebar-primary-foreground: 240 10% 10%;
+    --sidebar-accent: 240 8% 12%; /* Hover for sidebar items - darker, subtle */
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 240 5% 15%;
+    --sidebar-ring: 190 90% 60%;
 
-    --chart-1: 205 70% 50%; /* Sky Blue variant */
-    --chart-2: 195 65% 55%;  /* Accent Blue variant */
-    --chart-3: 220 25% 40%; /* Darker Slate for contrast */
-    --chart-4: 45 80% 60%;  /* A warm complementary color like a soft orange/yellow */
-    --chart-5: 30 70% 65%;
+    --chart-1: 190 85% 50%; /* Shiny Cyan variant */
+    --chart-2: 220 85% 55%;  /* Electric Blue variant */
+    --chart-3: 0 0% 70%; /* Silver/Light Gray for contrast */
+    --chart-4: 45 80% 60%;  /* A contrasting warm color if needed, e.g. gold/orange */
+    --chart-5: 300 70% 65%; /* A contrasting vibrant purple/pink if needed */
   }
 
   .dark {
-    --background: 220 30% 10%; /* Very Dark Blue/Almost Black */
-    --foreground: 210 40% 95%; /* Light Gray/Off-white text */
+    /* Dark mode can be an even deeper version or closely match the "light" black & shiny */
+    --background: 240 10% 3%; /* Even Darker */
+    --foreground: 0 0% 98%;
 
-    --card: 220 30% 14%; /* Darker card background */
-    --card-foreground: 210 40% 95%;
+    --card: 240 8% 7%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 220 30% 14%;
-    --popover-foreground: 210 40% 95%;
+    --popover: 240 8% 5%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 205 80% 60%; /* Sky Blue, slightly brighter for dark mode */
-    --primary-foreground: 220 25% 10%; /* Dark text on primary for contrast */
+    --primary: 190 90% 58%; /* Slightly adjusted if needed for deeper dark */
+    --primary-foreground: 240 10% 8%;
 
-    --secondary: 220 30% 20%; /* Darker secondary background */
-    --secondary-foreground: 210 40% 85%;
+    --secondary: 220 15% 12%;
+    --secondary-foreground: 0 0% 80%;
 
-    --muted: 220 30% 18%; /* Darker muted background */
-    --muted-foreground: 210 30% 65%;
+    --muted: 220 15% 10%;
+    --muted-foreground: 0 0% 55%;
 
-    --accent: 195 70% 60%; /* Accent Sky Blue for dark mode */
-    --accent-foreground: 220 25% 10%;
+    --accent: 220 90% 62%; /* Slightly adjusted for deeper dark */
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 63% 45%; /* Darker destructive red */
+    --destructive: 0 65% 48%; /* Darker destructive red */
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 30% 25%; /* Darker border */
-    --input: 220 30% 16%; /* Darker input background */
-    --ring: 205 80% 60%; /* Sky Blue ring for dark mode */
+    --border: 240 5% 18%;
+    --input: 240 5% 12%;
+    --ring: 190 90% 62%;
 
     /* Sidebar specific colors for dark mode */
-    --sidebar-background: 220 30% 8%; /* Even Darker Sidebar */
-    --sidebar-foreground: 210 40% 88%;
-    --sidebar-primary: 205 80% 60%;
-    --sidebar-primary-foreground: 220 25% 10%;
-    --sidebar-accent: 220 30% 18%;
-    --sidebar-accent-foreground: 210 40% 90%;
-    --sidebar-border: 220 30% 15%;
-    --sidebar-ring: 205 80% 60%;
+    --sidebar-background: 240 10% 5%;
+    --sidebar-foreground: 0 0% 88%;
+    --sidebar-primary: 190 90% 58%;
+    --sidebar-primary-foreground: 240 10% 8%;
+    --sidebar-accent: 240 8% 10%;
+    --sidebar-accent-foreground: 0 0% 92%;
+    --sidebar-border: 240 5% 12%;
+    --sidebar-ring: 190 90% 62%;
   }
 }
 
@@ -142,8 +143,7 @@ body {
     @apply transition-all duration-300 ease-in-out;
   }
   .hover-scale-up:hover {
-    animation: scaleUp 0.3s ease-out forwards;
-    /* Keep transform from being overridden by other hover effects if any */
-    transform: scale(1.03); 
+    /* animation: scaleUp 0.3s ease-out forwards; */ /* Using direct transform for more consistent hover */
+    transform: scale(1.03);
   }
 }
