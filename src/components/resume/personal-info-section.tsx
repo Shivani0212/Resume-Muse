@@ -2,7 +2,7 @@
 import type { PersonalInfo } from '@/types';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from '@/components/ui/button';
-import { Mail, Phone, Linkedin, Github, Link as LinkIcon, Download } from 'lucide-react';
+import { Mail, Phone, Linkedin, Github, Link as LinkIcon, Download, Printer } from 'lucide-react';
 
 interface PersonalInfoSectionProps {
   data: PersonalInfo;
@@ -10,12 +10,11 @@ interface PersonalInfoSectionProps {
 
 export function PersonalInfoSection({ data }: PersonalInfoSectionProps) {
   const initials = data.name.split(' ').map(n => n[0]).join('');
-  // Note to user: For a direct download, it's best to place the PDF 
-  // in the `public` folder (e.g., `public/Shivani_Kumari_Resume.pdf`)
-  // and use the link `/Shivani_Kumari_Resume.pdf`.
-  // The current Google Drive link might not offer a direct download for all users.
   const resumeUrl = "https://drive.google.com/file/d/1uOhx6Avg2_-41osOFUQAgEWg9j-9WezV/view?usp=drivesdk";
 
+  const handlePrintToPdf = () => {
+    window.print();
+  };
 
   return (
     <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 p-6 bg-card rounded-lg shadow-md hover-scale-up">
@@ -61,12 +60,16 @@ export function PersonalInfoSection({ data }: PersonalInfoSectionProps) {
           )}
         </div>
       </div>
-      <div className="mt-4 md:mt-0 md:ml-auto flex-shrink-0">
+      <div className="mt-4 md:mt-0 md:ml-auto flex-shrink-0 flex flex-col space-y-3 no-print">
         <Button asChild variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-300 group">
           <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
             <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
             Download Resume
           </a>
+        </Button>
+        <Button variant="outline" size="lg" onClick={handlePrintToPdf} className="border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-colors duration-300 group">
+          <Printer className="mr-2 h-5 w-5 group-hover:animate-pulse" />
+          Save Page as PDF
         </Button>
       </div>
     </div>

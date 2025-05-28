@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils";
 
 const navItems = [
   { href: "/", label: "Portfolio", icon: UserSquare }, // Updated label and icon
@@ -27,7 +28,7 @@ export function AppSidebar() {
   const pathname = usePathname();
 
   return (
-    <Sidebar collapsible="icon" variant="sidebar">
+    <Sidebar collapsible="icon" variant="sidebar" className="no-print">
       <SidebarHeader className="p-4">
         <Link href="/" className="flex items-center gap-2">
           <FileText className="w-8 h-8 text-primary" />

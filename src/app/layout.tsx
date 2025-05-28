@@ -43,7 +43,7 @@ export default function RootLayout({
               <main className="flex-grow p-4 md:p-8">
                 {children}
               </main>
-              <footer className="p-4 text-center text-sm text-muted-foreground">
+              <footer className="p-4 text-center text-sm text-muted-foreground no-print">
                 © {new Date().getFullYear()} Shivani Kumari. All rights reserved. 
               </footer>
             </div>
