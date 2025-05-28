@@ -1,8 +1,7 @@
 
 import type { Skill } from '@/types';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Lightbulb, Code, PenToolIcon, Users, Brain } from 'lucide-react';
+import { Lightbulb, Code, PenToolIcon, Users, Brain } from 'lucide-react'; // Icons might not be needed here if handled in page.tsx for section header
 
 interface SkillsSectionProps {
   skills: Skill[];
@@ -25,39 +24,35 @@ const getCategoryIcon = (category: string) => {
 };
 
 export function SkillsSection({ skills }: SkillsSectionProps) {
+  // This component now only renders the content part.
+  // The Card and AccordionTrigger (acting as CardHeader) are in page.tsx.
   const groupedSkills = skills.reduce((acc, skill) => {
     (acc[skill.category] = acc[skill.category] || []).push(skill);
     return acc;
   }, {} as Record<string, Skill[]>);
 
   return (
-    <Card className="shadow-lg hover-scale-up">
-      <CardHeader className="flex flex-row items-center gap-2">
-        <Lightbulb className="w-6 h-6 text-primary" />
-        <CardTitle className="text-2xl font-semibold text-primary">Skills</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        {Object.entries(groupedSkills).map(([category, categorySkills]) => (
-          <div key={category}>
-            <h4 className="flex items-center text-lg font-medium text-foreground mb-3">
-              {getCategoryIcon(category)}
-              {category}
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {categorySkills.map((skill) => (
-                <Badge 
-                  key={skill.id} 
-                  variant="secondary" 
-                  className="text-sm py-1.5 px-3 shadow-sm hover:shadow-md transition-shadow duration-200 bg-secondary/70 hover:bg-secondary text-secondary-foreground"
-                >
-                  {skill.name}
-                  {skill.level && <span className="ml-1.5 text-xs opacity-75">({skill.level})</span>}
-                </Badge>
-              ))}
-            </div>
+    <div className="space-y-6">
+      {Object.entries(groupedSkills).map(([category, categorySkills]) => (
+        <div key={category}>
+          <h4 className="flex items-center text-lg font-medium text-foreground mb-3">
+            {getCategoryIcon(category)}
+            {category}
+          </h4>
+          <div className="flex flex-wrap gap-2">
+            {categorySkills.map((skill) => (
+              <Badge 
+                key={skill.id} 
+                variant="secondary" 
+                className="text-sm py-1.5 px-3 shadow-sm hover:shadow-md transition-shadow duration-200 bg-secondary/70 hover:bg-secondary text-secondary-foreground"
+              >
+                {skill.name}
+                {skill.level && <span className="ml-1.5 text-xs opacity-75">({skill.level})</span>}
+              </Badge>
+            ))}
           </div>
-        ))}
-      </CardContent>
-    </Card>
+        </div>
+      ))}
+    </div>
   );
 }

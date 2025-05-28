@@ -1,21 +1,14 @@
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { UserCircle } from "lucide-react";
+import { UserCircle } from "lucide-react"; // Icon might not be needed here anymore if handled in page.tsx
 
 interface SummarySectionProps {
   summary: string;
 }
 
 export function SummarySection({ summary }: SummarySectionProps) {
+  // This component now only renders the content part, not the Card or CardHeader.
+  // The Card and AccordionTrigger (acting as CardHeader) are in page.tsx.
   return (
-    <Card className="shadow-lg hover-scale-up">
-      <CardHeader className="flex flex-row items-center gap-2">
-        <UserCircle className="w-6 h-6 text-primary" />
-        <CardTitle className="text-2xl font-semibold text-primary">Summary</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p className="text-foreground leading-relaxed text-justify">{summary}</p>
-      </CardContent>
-    </Card>
+    <p className="text-foreground leading-relaxed text-justify">{summary}</p>
   );
 }

@@ -10,8 +10,15 @@ import { ExperienceSection } from '@/components/resume/experience-section';
 import { EducationSection } from '@/components/resume/education-section';
 import { SkillsSection } from '@/components/resume/skills-section';
 import { ProjectsSection } from '@/components/resume/projects-section';
-import { SectionWrapper } from '@/components/resume/section-wrapper';
-import { Card, CardContent } from '@/components/ui/card';
+import { SectionWrapper } from '@/components/resume/section-wrapper'; // May not be needed if Card provides enough styling
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { UserCircle, Code, Lightbulb, Briefcase, GraduationCap, UserSquare } from 'lucide-react';
 
 // Define the component map for sections
 const sectionComponentsMap: Record<Exclude<SectionId, 'personalInfo' | 'aiCoach'>, React.FC<any>> = {
@@ -31,6 +38,15 @@ const portfolioSectionOrder: Exclude<SectionId, 'personalInfo' | 'aiCoach'>[] = 
   'education',
 ];
 
+const sectionIconMap: Record<Exclude<SectionId, 'personalInfo' | 'aiCoach'>, React.ElementType> = {
+  summary: UserCircle,
+  projects: Code,
+  skills: Lightbulb,
+  experience: Briefcase,
+  education: GraduationCap,
+};
+
+
 export default function PortfolioPage() {
   const [resumeData, setResumeData] = useState<ResumeData | null>(null);
   const [isClient, setIsClient] = useState(false);
@@ -41,7 +57,6 @@ export default function PortfolioPage() {
   }, []);
 
   if (!resumeData || !isClient) {
-    // Basic loading state or skeleton
     return (
       <div className="space-y-8 animate-fadeIn">
         <Card><CardContent className="h-48 p-6 animate-pulse bg-muted rounded-lg"></CardContent></Card>
@@ -51,8 +66,7 @@ export default function PortfolioPage() {
     );
   }
 
-  // Prepare section data based on the fixed order
-  const sectionsToRender: ResumeSection[] = portfolioSectionOrder.map(id => {
+  const sectionsToRenderData = portfolioSectionOrder.map(id => {
     const titleMap: Record<typeof id, string> = {
       summary: 'Summary',
       experience: 'Responsibilities',
@@ -60,7 +74,7 @@ export default function PortfolioPage() {
       skills: 'Skills',
       projects: 'Projects',
     };
-    return { id, title: titleMap[id], component: sectionComponentsMap[id] };
+    return { id, title: titleMap[id], component: sectionComponentsMap[id], icon: sectionIconMap[id] };
   });
 
   return (
@@ -70,29 +84,43 @@ export default function PortfolioPage() {
         <p className="text-xl md:text-2xl text-accent mt-2">{resumeData.personalInfo.title}</p>
       </header>
 
-      <div className="space-y-12">
-        <SectionWrapper>
-          <PersonalInfoSection data={resumeData.personalInfo} />
-        </SectionWrapper>
+      {/* PersonalInfoSection remains outside the accordion */}
+      <SectionWrapper>
+        <PersonalInfoSection data={resumeData.personalInfo} />
+      </SectionWrapper>
 
-        {sectionsToRender.map((section) => {
+      <Accordion type="multiple" collapsible className="w-full space-y-12 mt-12" defaultValue={['summary', 'projects']}>
+        {sectionsToRenderData.map((section) => {
           const SectionComponent = section.component;
-          // Props mapping based on section ID
+          const IconComponent = section.icon;
           let sectionProps = {};
           if (section.id === 'summary') {
             sectionProps = { summary: resumeData.personalInfo.summary };
-          }
-          else if (resumeData[section.id as keyof Omit<ResumeData, 'personalInfo' | 'aiCoach'>]) {
+          } else if (resumeData[section.id as keyof Omit<ResumeData, 'personalInfo' | 'aiCoach'>]) {
              sectionProps = { [section.id]: resumeData[section.id as keyof Omit<ResumeData, 'personalInfo' | 'aiCoach'>] };
           }
           
           return (
-            <SectionWrapper key={section.id}>
-              <SectionComponent {...sectionProps} />
-            </SectionWrapper>
+            <AccordionItem key={section.id} value={section.id} className="border-none overflow-hidden rounded-lg shadow-lg hover-scale-up bg-card">
+              <AccordionTrigger className="w-full p-6 hover:no-underline text-left">
+                <div className="flex flex-row items-center gap-3 w-full">
+                  {IconComponent && <IconComponent className="w-7 h-7 text-primary flex-shrink-0" />}
+                  <h2 className="text-2xl font-semibold text-primary">{section.title}</h2>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="bg-card"> 
+                {/* AccordionContent has default padding, if section components add their own, it might double up.
+                    Let's ensure section components now *don't* add CardContent-like padding if AccordionContent handles it.
+                    ShadCN AccordionContent: "pb-4 pt-0". We will make sure our refactored components' content fits this.
+                */}
+                <div className="p-6 pt-0"> {/* Add wrapper to re-apply consistent padding similar to old CardContent */}
+                   <SectionComponent {...sectionProps} />
+                </div>
+              </AccordionContent>
+            </AccordionItem>
           );
         })}
-      </div>
+      </Accordion>
     </div>
   );
 }
