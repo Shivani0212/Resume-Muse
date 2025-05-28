@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
@@ -17,8 +18,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Resume Muse',
-  description: 'Craft your perfect resume with AI.',
+  title: 'Shivani Kumari - Portfolio', // Updated title
+  description: "Shivani Kumari's professional portfolio.", // Updated description
 };
 
 export default function RootLayout({
@@ -43,7 +44,7 @@ export default function RootLayout({
                 {children}
               </main>
               <footer className="p-4 text-center text-sm text-muted-foreground">
-                © {new Date().getFullYear()} Resume Muse. All rights reserved.
+                © {new Date().getFullYear()} Shivani Kumari. All rights reserved. 
               </footer>
             </div>
           </SidebarInset>

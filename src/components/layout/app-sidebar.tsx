@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FileText, Wand2, Home, Settings } from "lucide-react";
+import { FileText, Wand2, UserSquare, Settings } from "lucide-react"; // Changed Home to UserSquare
 import {
   Sidebar,
   SidebarHeader,
@@ -18,7 +18,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
 const navItems = [
-  { href: "/", label: "My Resume", icon: Home },
+  { href: "/", label: "Portfolio", icon: UserSquare }, // Updated label and icon
   { href: "/tailor", label: "Tailor Resume (AI)", icon: Wand2 },
   // { href: "/settings", label: "Settings", icon: Settings }, // Future use
 ];
@@ -32,7 +32,7 @@ export function AppSidebar() {
         <Link href="/" className="flex items-center gap-2">
           <FileText className="w-8 h-8 text-primary" />
           <h1 className="text-2xl font-semibold text-foreground group-data-[collapsible=icon]:hidden">
-            Resume Muse
+            Portfolio AI
           </h1>
         </Link>
       </SidebarHeader>

@@ -11,12 +11,10 @@ import { EducationSection } from '@/components/resume/education-section';
 import { SkillsSection } from '@/components/resume/skills-section';
 import { ProjectsSection } from '@/components/resume/projects-section';
 import { SectionWrapper } from '@/components/resume/section-wrapper';
-import { Button } from '@/components/ui/button';
-import { Printer } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
-const sectionComponentsMap: Record<SectionId, React.FC<any>> = {
-  personalInfo: PersonalInfoSection,
+// Define the component map for sections
+const sectionComponentsMap: Record<Exclude<SectionId, 'personalInfo'>, React.FC<any>> = {
   summary: SummarySection,
   experience: ExperienceSection,
   education: EducationSection,
@@ -24,17 +22,17 @@ const sectionComponentsMap: Record<SectionId, React.FC<any>> = {
   projects: ProjectsSection,
 };
 
-const initialSectionOrder: SectionId[] = [
+// Define the fixed order of sections for the portfolio
+const portfolioSectionOrder: Exclude<SectionId, 'personalInfo'>[] = [
   'summary',
+  'projects',
+  'skills',
   'experience',
   'education',
-  'skills',
-  'projects',
 ];
 
-export default function ResumePage() {
+export default function PortfolioPage() {
   const [resumeData, setResumeData] = useState<ResumeData | null>(null);
-  const [sectionOrder, setSectionOrder] = useState<SectionId[]>(initialSectionOrder);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -42,26 +40,10 @@ export default function ResumePage() {
     setIsClient(true);
   }, []);
 
-  const handlePrint = () => {
-    if (isClient) {
-      window.print();
-    }
-  };
-
-  const moveSection = (index: number, direction: 'up' | 'down') => {
-    const newOrder = [...sectionOrder];
-    const targetIndex = direction === 'up' ? index - 1 : index + 1;
-
-    if (targetIndex < 0 || targetIndex >= newOrder.length) return;
-
-    [newOrder[index], newOrder[targetIndex]] = [newOrder[targetIndex], newOrder[index]];
-    setSectionOrder(newOrder);
-  };
-
   if (!resumeData || !isClient) {
     // Basic loading state or skeleton
     return (
-      <div className="space-y-8">
+      <div className="space-y-8 animate-fadeIn">
         <Card><CardContent className="h-48 p-6 animate-pulse bg-muted rounded-lg"></CardContent></Card>
         <Card><CardContent className="h-96 p-6 animate-pulse bg-muted rounded-lg"></CardContent></Card>
         <Card><CardContent className="h-64 p-6 animate-pulse bg-muted rounded-lg"></CardContent></Card>
@@ -69,83 +51,40 @@ export default function ResumePage() {
     );
   }
 
-  const sections: ResumeSection[] = sectionOrder.map(id => {
-    switch (id) {
-      case 'summary':
-        return { id, title: 'Summary', component: SummarySection };
-      case 'experience':
-        return { id, title: 'Experience', component: ExperienceSection };
-      case 'education':
-        return { id, title: 'Education', component: EducationSection };
-      case 'skills':
-        return { id, title: 'Skills', component: SkillsSection };
-      case 'projects':
-        return { id, title: 'Projects', component: ProjectsSection };
-      default:
-        throw new Error(`Unknown section ID: ${id}`);
-    }
+  // Prepare section data based on the fixed order
+  const sectionsToRender: ResumeSection[] = portfolioSectionOrder.map(id => {
+    const titleMap: Record<typeof id, string> = {
+      summary: 'Summary',
+      experience: 'Work Experience & Responsibilities',
+      education: 'Education',
+      skills: 'Skills',
+      projects: 'Projects',
+    };
+    return { id, title: titleMap[id], component: sectionComponentsMap[id] };
   });
 
   return (
-    <div className="container mx-auto max-w-4xl py-8 px-4 print:px-0">
-      <style jsx global>{`
-        @media print {
-          body {
-            -webkit-print-color-adjust: exact; /* Chrome, Safari */
-            color-adjust: exact; /* Firefox */
-          }
-          .no-print {
-            display: none !important;
-          }
-          .print\\:px-0 {
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-          }
-           main {
-            padding: 0 !important;
-          }
-          .print\\:shadow-none {
-            box-shadow: none !important;
-          }
-          /* Ensure cards take full width and don't break across pages weirdly */
-          .print\\:break-inside-avoid {
-            break-inside: avoid;
-          }
-        }
-      `}</style>
-      
-      <header className="mb-8 no-print">
-        <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-primary">My Resume</h1>
-          <Button onClick={handlePrint} variant="outline">
-            <Printer className="mr-2 h-4 w-4" />
-            Print / Save PDF
-          </Button>
-        </div>
-        <p className="text-muted-foreground mt-1">Customize and share your professional profile.</p>
+    <div className="container mx-auto max-w-5xl py-8 px-4 animate-fadeIn">
+      <header className="mb-12 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold text-primary">Shivani Kumari</h1>
+        <p className="text-xl md:text-2xl text-accent mt-2">{resumeData.personalInfo.title}</p>
       </header>
 
-      <div className="print:shadow-none">
+      <div className="space-y-12">
         <SectionWrapper>
-            <PersonalInfoSection data={resumeData.personalInfo} />
+          <PersonalInfoSection data={resumeData.personalInfo} />
         </SectionWrapper>
 
-        {sections.map((section, index) => {
+        {sectionsToRender.map((section) => {
           const SectionComponent = section.component;
-          const sectionDataKey = section.id === 'summary' ? 'summary' : section.id;
-          const props = section.id === 'summary' ? { summary: resumeData.personalInfo.summary } : { [sectionDataKey]: resumeData[sectionDataKey as keyof Omit<ResumeData, 'personalInfo'>] };
+          // Props mapping based on section ID
+          const sectionProps = section.id === 'summary'
+            ? { summary: resumeData.personalInfo.summary }
+            : { [section.id]: resumeData[section.id as keyof Omit<ResumeData, 'personalInfo'>] };
           
           return (
-            <SectionWrapper
-              key={section.id}
-              onMoveUp={() => moveSection(index, 'up')}
-              onMoveDown={() => moveSection(index, 'down')}
-              isFirst={index === 0}
-              isLast={index === sections.length - 1}
-            >
-              <div className="print:break-inside-avoid">
-                <SectionComponent {...props} />
-              </div>
+            <SectionWrapper key={section.id}>
+              <SectionComponent {...sectionProps} />
             </SectionWrapper>
           );
         })}
