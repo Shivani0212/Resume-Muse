@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FileText, Wand2, UserSquare, Settings } from "lucide-react"; // Changed Home to UserSquare
+import { FileText, UserSquare, Settings } from "lucide-react"; // Changed Home to UserSquare, removed Wand2
 import {
   Sidebar,
   SidebarHeader,
@@ -20,7 +20,6 @@ import { cn } from "@/lib/utils";
 
 const navItems = [
   { href: "/", label: "Portfolio", icon: UserSquare }, // Updated label and icon
-  { href: "/tailor", label: "Tailor Resume (AI)", icon: Wand2 },
   // { href: "/settings", label: "Settings", icon: Settings }, // Future use
 ];
 

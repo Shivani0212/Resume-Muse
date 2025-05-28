@@ -18,11 +18,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { UserCircle, Code, Lightbulb, Briefcase, GraduationCap, UserSquare, Wand2 } from 'lucide-react';
-import { AiCoachSection } from '@/components/resume/ai-coach-section';
+import { UserCircle, Code, Lightbulb, Briefcase, GraduationCap, UserSquare } from 'lucide-react';
+
 
 // Define the component map for sections
-const sectionComponentsMap: Record<Exclude<SectionId, 'personalInfo' | 'aiCoach'>, React.FC<any>> = {
+const sectionComponentsMap: Record<Exclude<SectionId, 'personalInfo'>, React.FC<any>> = {
   summary: SummarySection,
   experience: ExperienceSection,
   education: EducationSection,
@@ -31,7 +31,7 @@ const sectionComponentsMap: Record<Exclude<SectionId, 'personalInfo' | 'aiCoach'
 };
 
 // Define the fixed order of sections for the portfolio
-const portfolioSectionOrder: Exclude<SectionId, 'personalInfo' | 'aiCoach'>[] = [
+const portfolioSectionOrder: Exclude<SectionId, 'personalInfo'>[] = [
   'summary',
   'projects',
   'skills',
@@ -39,7 +39,7 @@ const portfolioSectionOrder: Exclude<SectionId, 'personalInfo' | 'aiCoach'>[] = 
   'education',
 ];
 
-const sectionIconMap: Record<Exclude<SectionId, 'personalInfo' | 'aiCoach'>, React.ElementType> = {
+const sectionIconMap: Record<Exclude<SectionId, 'personalInfo'>, React.ElementType> = {
   summary: UserCircle,
   projects: Code,
   skills: Lightbulb,
@@ -90,11 +90,6 @@ export default function PortfolioPage() {
         <PersonalInfoSection data={resumeData.personalInfo} />
       </SectionWrapper>
 
-      {/* AI Coach Section - remains outside the accordion, displayed prominently */}
-      <SectionWrapper>
-        <AiCoachSection />
-      </SectionWrapper>
-
       <Accordion type="multiple" className="w-full space-y-12 mt-12" defaultValue={['summary', 'projects']}>
         {sectionsToRenderData.map((section) => {
           const SectionComponent = section.component;
@@ -102,8 +97,8 @@ export default function PortfolioPage() {
           let sectionProps = {};
           if (section.id === 'summary') {
             sectionProps = { summary: resumeData.personalInfo.summary };
-          } else if (resumeData[section.id as keyof Omit<ResumeData, 'personalInfo' | 'aiCoach'>]) {
-             sectionProps = { [section.id]: resumeData[section.id as keyof Omit<ResumeData, 'personalInfo' | 'aiCoach'>] };
+          } else if (resumeData[section.id as keyof Omit<ResumeData, 'personalInfo'>]) {
+             sectionProps = { [section.id]: resumeData[section.id as keyof Omit<ResumeData, 'personalInfo'>] };
           }
           
           return (
