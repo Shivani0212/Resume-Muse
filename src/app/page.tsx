@@ -10,7 +10,7 @@ import { ExperienceSection } from '@/components/resume/experience-section';
 import { EducationSection } from '@/components/resume/education-section';
 import { SkillsSection } from '@/components/resume/skills-section';
 import { ProjectsSection } from '@/components/resume/projects-section';
-import { SectionWrapper } from '@/components/resume/section-wrapper'; // May not be needed if Card provides enough styling
+import { SectionWrapper } from '@/components/resume/section-wrapper';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   Accordion,
@@ -18,7 +18,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { UserCircle, Code, Lightbulb, Briefcase, GraduationCap, UserSquare } from 'lucide-react';
+import { UserCircle, Code, Lightbulb, Briefcase, GraduationCap, UserSquare, Wand2 } from 'lucide-react';
+import { AiCoachSection } from '@/components/resume/ai-coach-section';
 
 // Define the component map for sections
 const sectionComponentsMap: Record<Exclude<SectionId, 'personalInfo' | 'aiCoach'>, React.FC<any>> = {
@@ -89,7 +90,12 @@ export default function PortfolioPage() {
         <PersonalInfoSection data={resumeData.personalInfo} />
       </SectionWrapper>
 
-      <Accordion type="multiple" collapsible className="w-full space-y-12 mt-12" defaultValue={['summary', 'projects']}>
+      {/* AI Coach Section - remains outside the accordion, displayed prominently */}
+      <SectionWrapper>
+        <AiCoachSection />
+      </SectionWrapper>
+
+      <Accordion type="multiple" className="w-full space-y-12 mt-12" defaultValue={['summary', 'projects']}>
         {sectionsToRenderData.map((section) => {
           const SectionComponent = section.component;
           const IconComponent = section.icon;
@@ -109,11 +115,7 @@ export default function PortfolioPage() {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="bg-card"> 
-                {/* AccordionContent has default padding, if section components add their own, it might double up.
-                    Let's ensure section components now *don't* add CardContent-like padding if AccordionContent handles it.
-                    ShadCN AccordionContent: "pb-4 pt-0". We will make sure our refactored components' content fits this.
-                */}
-                <div className="p-6 pt-0"> {/* Add wrapper to re-apply consistent padding similar to old CardContent */}
+                <div className="p-6 pt-0"> 
                    <SectionComponent {...sectionProps} />
                 </div>
               </AccordionContent>
