@@ -1,0 +1,19 @@
+# render.yaml
+# Configuration for deploying a Next.js app on Render.
+# See https://render.com/docs/yaml-spec for details.
+
+services:
+  - type: web
+    name: resume-muse-app # You can change this name in your Render dashboard
+    env: node # Specify the environment as Node.js
+    plan: free # Or your desired plan (e.g., starter)
+    buildCommand: npm run build # Command to build your Next.js app
+    startCommand: npm run start # Command to start your Next.js app
+    healthCheckPath: / # Optional: Path for health checks
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Add any other necessary environment variables here.
+      # For example, if you reinstate AI features later:
+      # - key: GOOGLE_API_KEY
+      #   sync: false # Set this to false if you want to set the value in Render's dashboard
