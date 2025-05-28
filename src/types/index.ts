@@ -53,7 +53,7 @@ export interface ResumeData {
   projects: Project[];
 }
 
-export type SectionId = 'personalInfo' | 'summary' | 'experience' | 'education' | 'skills' | 'projects' | 'aiCoach';
+export type SectionId = 'personalInfo' | 'summary' | 'experience' | 'education' | 'skills' | 'projects';
 
 export interface ResumeSection {
   id: SectionId;

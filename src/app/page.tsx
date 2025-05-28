@@ -10,26 +10,23 @@ import { ExperienceSection } from '@/components/resume/experience-section';
 import { EducationSection } from '@/components/resume/education-section';
 import { SkillsSection } from '@/components/resume/skills-section';
 import { ProjectsSection } from '@/components/resume/projects-section';
-import { AiCoachSection } from '@/components/resume/ai-coach-section'; // New Import
 import { SectionWrapper } from '@/components/resume/section-wrapper';
 import { Card, CardContent } from '@/components/ui/card';
 
 // Define the component map for sections
-const sectionComponentsMap: Record<Exclude<SectionId, 'personalInfo'>, React.FC<any>> = {
+const sectionComponentsMap: Record<Exclude<SectionId, 'personalInfo' | 'aiCoach'>, React.FC<any>> = {
   summary: SummarySection,
   experience: ExperienceSection,
   education: EducationSection,
   skills: SkillsSection,
   projects: ProjectsSection,
-  aiCoach: AiCoachSection, // New Entry
 };
 
 // Define the fixed order of sections for the portfolio
-const portfolioSectionOrder: Exclude<SectionId, 'personalInfo'>[] = [
+const portfolioSectionOrder: Exclude<SectionId, 'personalInfo' | 'aiCoach'>[] = [
   'summary',
   'projects',
   'skills',
-  'aiCoach', // New section added
   'experience',
   'education',
 ];
@@ -58,11 +55,10 @@ export default function PortfolioPage() {
   const sectionsToRender: ResumeSection[] = portfolioSectionOrder.map(id => {
     const titleMap: Record<typeof id, string> = {
       summary: 'Summary',
-      experience: 'Responsibilities', // Updated Title
+      experience: 'Responsibilities',
       education: 'Education',
       skills: 'Skills',
       projects: 'Projects',
-      aiCoach: 'AI Resume Coach', // Title for the new section
     };
     return { id, title: titleMap[id], component: sectionComponentsMap[id] };
   });
@@ -85,17 +81,13 @@ export default function PortfolioPage() {
           let sectionProps = {};
           if (section.id === 'summary') {
             sectionProps = { summary: resumeData.personalInfo.summary };
-          } else if (section.id === 'aiCoach') {
-            sectionProps = {}; // AiCoachSection doesn't need specific props from resumeData
-          } 
+          }
           else if (resumeData[section.id as keyof Omit<ResumeData, 'personalInfo' | 'aiCoach'>]) {
              sectionProps = { [section.id]: resumeData[section.id as keyof Omit<ResumeData, 'personalInfo' | 'aiCoach'>] };
           }
           
           return (
             <SectionWrapper key={section.id}>
-              {/* Explicitly render title for aiCoach section if needed, or handle in component */}
-              {/* For other sections, title is usually part of the component's CardHeader */}
               <SectionComponent {...sectionProps} />
             </SectionWrapper>
           );
