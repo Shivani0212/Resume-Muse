@@ -12,7 +12,7 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
     <Card className="shadow-lg hover-scale-up">
       <CardHeader className="flex flex-row items-center gap-2">
         <Briefcase className="w-6 h-6 text-primary" />
-        <CardTitle className="text-2xl font-semibold text-primary">Work Experience & Responsibilities</CardTitle>
+        <CardTitle className="text-2xl font-semibold text-primary">Responsibilities</CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         {experience.map((entry) => (

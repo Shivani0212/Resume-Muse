@@ -58,7 +58,7 @@ export default function PortfolioPage() {
   const sectionsToRender: ResumeSection[] = portfolioSectionOrder.map(id => {
     const titleMap: Record<typeof id, string> = {
       summary: 'Summary',
-      experience: 'Work Experience & Responsibilities', // Updated Title
+      experience: 'Responsibilities', // Updated Title
       education: 'Education',
       skills: 'Skills',
       projects: 'Projects',
