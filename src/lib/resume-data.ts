@@ -73,6 +73,16 @@ export const mockResumeData: ResumeData = {
       details: ['Percentage: 85 %'],
     },
   ],
+  achievements: [
+    {
+      id: 'ach1',
+      description: 'Secured Global Rank 2339 in Leetcode Weekly Contest 344',
+    },
+    {
+      id: 'ach2',
+      description: 'Successfully solved 200+ problems on Leetcode and secured a good rating',
+    },
+  ],
   skills: [
     // Programming Languages
     { id: 's1', name: 'C++', category: 'Programming Languages', level: 'Advanced' },
@@ -80,6 +90,7 @@ export const mockResumeData: ResumeData = {
     { id: 's3', name: 'JavaScript', category: 'Programming Languages', level: 'Intermediate' },
     { id: 's4', name: 'Python', category: 'Programming Languages', level: 'Intermediate' },
     { id: 's5', name: 'SQL', category: 'Programming Languages', level: 'Intermediate' },
+    { id: 's24', name: 'TypeScript', category: 'Programming Languages', level: 'Intermediate' },
     // Frameworks/Libraries
     { id: 's6', name: 'NodeJS', category: 'Frameworks/Libraries', level: 'Intermediate' },
     { id: 's7', name: 'ReactJS', category: 'Frameworks/Libraries', level: 'Intermediate' },
@@ -93,13 +104,14 @@ export const mockResumeData: ResumeData = {
     { id: 's14', name: 'MySQL', category: 'Databases', level: 'Intermediate' },
     { id: 's15', name: 'MongoDB', category: 'Databases', level: 'Intermediate' },
     { id: 's16', name: 'DBMS', category: 'Databases', level: 'Advanced' }, 
+    { id: 's25', name: 'Supabase', category: 'Databases', level: 'Beginner' },
     // DevOps/Tools
     { id: 's17', name: 'Git', category: 'DevOps/Tools', level: 'Advanced' },
     { id: 's18', name: 'Postman', category: 'DevOps/Tools', level: 'Intermediate' },
+    { id: 's26', name: 'Swagger API', category: 'DevOps/Tools', level: 'Beginner' },
     // Methodologies
     { id: 's19', name: 'Data Structures & Algorithms', category: 'Methodologies', level: 'Advanced' },
     // Other 
-    { id: 's20', name: 'Operating Systems (OS)', category: 'Other', level: 'Advanced' },
     { id: 's21', name: 'Object-Oriented Programming (OOPs)', category: 'Other', level: 'Advanced' },
     { id: 's22', name: 'Networking', category: 'Other', level: 'Intermediate' },
     { id: 's23', name: 'Machine learning', category: 'Other', level: 'Beginner' },
