@@ -51,10 +51,14 @@ export interface ResumeData {
   education: EducationEntry[];
   skills: Skill[];
   projects: Project[];
+ achievements: {
+    id: string;
+    description: string;
+ }[];
 }
 
 // Removed 'aiCoach' from SectionId
-export type SectionId = 'personalInfo' | 'summary' | 'experience' | 'education' | 'skills' | 'projects';
+export type SectionId = 'personalInfo' | 'summary' | 'experience' | 'education' | 'skills' | 'projects' | 'achievements';
 
 export interface ResumeSection {
   id: SectionId;

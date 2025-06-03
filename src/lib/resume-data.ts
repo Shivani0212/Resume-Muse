@@ -74,15 +74,12 @@ export const mockResumeData: ResumeData = {
     },
   ],
   achievements: [
-    {
-      id: 'ach1',
-      description: 'Secured Global Rank 2339 in Leetcode Weekly Contest 344',
-    },
-    {
-      id: 'ach2',
-      description: 'Successfully solved 200+ problems on Leetcode and secured a good rating',
-    },
+    { id: 'ach3', description: 'Secured a position among the Top 20 performers in the EmpowHER Codeathon 2025 organized by Akamai.' },
+    { id: 'ach4', description: 'Participated in the grand finale National-level Chhalaang 2.0 Hackathon by MetaMorph, demonstrating collaborative problem-solving and innovative tech skills among 400 selected female students.' },
+    { id: 'ach5', description: 'Ranked 10 among 189 girls in TechMaiden, an all-girls coding event, at the Avishkar’22 (Tech fest of MNNIT).' },
   ],
+
+
   skills: [
     // Programming Languages
     { id: 's1', name: 'C++', category: 'Programming Languages', level: 'Advanced' },

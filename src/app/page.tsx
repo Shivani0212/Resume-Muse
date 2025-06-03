@@ -10,6 +10,7 @@ import { ExperienceSection } from '@/components/resume/experience-section';
 import { EducationSection } from '@/components/resume/education-section';
 import { SkillsSection } from '@/components/resume/skills-section';
 import { ProjectsSection } from '@/components/resume/projects-section';
+import AchievementsSection from '@/components/resume/achievements-section'; // Import the new component
 import { SectionWrapper } from '@/components/resume/section-wrapper';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
@@ -28,6 +29,7 @@ const sectionComponentsMap: Record<Exclude<SectionId, 'personalInfo'>, React.FC<
   education: EducationSection,
   skills: SkillsSection,
   projects: ProjectsSection,
+  achievements: AchievementsSection, // Add AchievementsSection
 };
 
 // Define the fixed order of sections for the portfolio
@@ -37,6 +39,7 @@ const portfolioSectionOrder: Exclude<SectionId, 'personalInfo'>[] = [
   'skills',
   'experience',
   'education',
+  'achievements', // Add 'achievements' to the order
 ];
 
 const sectionIconMap: Record<Exclude<SectionId, 'personalInfo'>, React.ElementType> = {
@@ -45,6 +48,7 @@ const sectionIconMap: Record<Exclude<SectionId, 'personalInfo'>, React.ElementTy
   skills: Lightbulb,
   experience: Briefcase,
   education: GraduationCap,
+  achievements: UserSquare, // Add an icon for achievements
 };
 
 
@@ -74,6 +78,7 @@ export default function PortfolioPage() {
       education: 'Education',
       skills: 'Skills',
       projects: 'Projects',
+      achievements: 'Achievements', // Add title for achievements
     };
     return { id, title: titleMap[id], component: sectionComponentsMap[id], icon: sectionIconMap[id] };
   });
