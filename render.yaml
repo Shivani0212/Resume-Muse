@@ -1,3 +1,4 @@
+
 # render.yaml
 # Configuration for deploying a Next.js app on Render.
 # See https://render.com/docs/yaml-spec for details.
@@ -8,7 +9,7 @@ services:
     env: node # Specify the environment as Node.js
     plan: free # Or your desired plan (e.g., starter)
     buildCommand: npm run build # Command to build your Next.js app
-    startCommand: npm run start # Command to start your Next.js app
+    startCommand: node .next/standalone/server.js # Updated to use standalone output
     healthCheckPath: / # Optional: Path for health checks
     envVars:
       - key: NODE_ENV
