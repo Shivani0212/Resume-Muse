@@ -11,15 +11,15 @@ interface PersonalInfoSectionProps {
 export function PersonalInfoSection({ data }: PersonalInfoSectionProps) {
   const initials = data.name.split(' ').map(n => n[0]).join('');
   const resumeUrl = "https://drive.google.com/file/d/1uOhx6Avg2_-41osOFUQAgEWg9j-9WezV/view?usp=drivesdk";
-
+  
   const handlePrintToPdf = () => {
     window.print();
   };
 
   return (
     <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 p-6 bg-card rounded-lg shadow-md hover-scale-up">
-      <Avatar className="w-24 h-24 md:w-32 md:h-32 border-2 border-primary shadow-lg">
-        <AvatarImage src={`https://placehold.co/128x128.png`} alt={data.name} data-ai-hint="animated girl" />
+      <Avatar className="w-24 h-24 md:w-32 md:h-32 border-2 border-primary shadow-lg" data-ai-hint="user avatar">
+        <AvatarImage src="/my.jpeg" alt={data.name} data-ai-hint="animated girl" />
         <AvatarFallback className="text-3xl bg-primary text-primary-foreground">{initials}</AvatarFallback>
       </Avatar>
       <div className="text-center md:text-left flex-grow">

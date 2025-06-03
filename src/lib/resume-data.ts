@@ -112,7 +112,7 @@ export const mockResumeData: ResumeData = {
         'A backend system that monitors store uptime and downtime through periodic status checks. It processes store status, business hours, and timezone data to generate reports for restaurant owners.',
       technologies: ['Node Js', 'Express Js', 'MongoDB', 'Moment Js'],
       link: 'https://github.com/Shivani0212/Store-Monitoring',
-      imageUrl: 'https://placehold.co/600x400.png',
+      imageUrl: '/store.png',
       dataAiHint: 'modern store',
     },
     {
@@ -122,7 +122,7 @@ export const mockResumeData: ResumeData = {
         'A platform for schools that makes task easier. Teachers can create classes, add subjects, manage events etc. Students can attend the classes & participates in various events.',
       technologies: ['Node Js', 'Express Js', 'MongoDB', 'React Js', 'Tailwind CSS'],
       link: 'https://github.com/Shivani0212/KoOl-ScHoOl',
-      imageUrl: 'https://placehold.co/600x400.png',
+      imageUrl: '/school.jpg',
       dataAiHint: 'animated school',
     },
     {
@@ -132,7 +132,7 @@ export const mockResumeData: ResumeData = {
         'A platform with the idea of ”Take care of our health by electronic medium”, Patients can conveniently schedule their appointments with their preferred doctors by accessing and checking the availability of time slots.',
       technologies: ['Node Js', 'Express Js', 'MongoDB', 'React Js', 'Bootstrap', 'CSS'],
       link: 'https://github.com/Shivani0212/ELITE-Wellness',
-      imageUrl: 'https://placehold.co/600x400.png',
+      imageUrl: '/health.png',
       dataAiHint: 'digital health',
     },
   ],
